@@ -24,7 +24,10 @@ class ListaDuplamenteLigadaOrdenada:
     # retorna True se a lista duplamente ligada está cheia, False caso contrário
     def is_full(self) -> bool:
         # implementação do método
-        pass
+        if self.__capacidade is None:
+            return False
+        else:
+            return self.__qtdItens == self.__capacidade
 
 
     # Retorna uma referência para o primeiro item da lista duplamente ligada
