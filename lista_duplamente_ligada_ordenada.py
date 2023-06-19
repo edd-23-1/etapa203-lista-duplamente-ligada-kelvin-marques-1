@@ -44,7 +44,10 @@ class ListaDuplamenteLigadaOrdenada:
     # Caso a lista esteja vazia, retorna None
     def last(self) -> bool:
         # implementação do método
-        pass
+        if self.__fim is None:
+            return None
+        else:
+            return self.__fim
 
 
     # insere um elemento na lista duplamente ligada em ordem crescente em seguida retorna True
