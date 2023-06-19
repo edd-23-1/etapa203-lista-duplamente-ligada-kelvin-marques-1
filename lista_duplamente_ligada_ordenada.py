@@ -18,7 +18,7 @@ class ListaDuplamenteLigadaOrdenada:
     # Retorna True se a lista duplamente ligada está vazia, False caso contrário
     def is_empty(self) -> bool:
         # implementação do método
-        pass
+        return self.__qtdItens == 0
 
     
     # retorna True se a lista duplamente ligada está cheia, False caso contrário
