@@ -131,7 +131,14 @@ class ListaDuplamenteLigadaOrdenada:
     # ou False caso contrário
     def contains(self, valor) -> No:
         # implementação do método
-        pass
+        noAtual = self.__inicio
+
+        while noAtual is not None:
+            if noAtual.dado == valor:
+                return True
+            noAtual = noAtual.prox
+
+        return False
 
 
     # retorna uma lista de string com valores dos elementos da lista duplamente ligada
