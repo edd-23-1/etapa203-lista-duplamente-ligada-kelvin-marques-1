@@ -94,7 +94,37 @@ class ListaDuplamenteLigadaOrdenada:
     # se a lista duplamente ligada estiver vazia, lança uma exceção: raise Exception("mensagem de erro")
     def remove(self, valor) -> bool:
         # implementação do método
-        pass
+        if self.is_empty():
+            raise Exception("Lista duplamente ligada ordenada vazia")
+
+        noAtual = self.__inicio
+
+        while noAtual is not None:
+            if noAtual.dado == valor:
+                # Remover o nó atual
+                if noAtual == self.__inicio and noAtual == self.__fim:
+                    # Caso o nó seja o único nó na lista
+                    self.__inicio = None
+                    self.__fim = None
+                elif noAtual == self.__inicio:
+                    # Caso o nó seja o primeiro nó da lista
+                    self.__inicio = noAtual.prox
+                    self.__inicio.anterior = None
+                elif noAtual == self.__fim:
+                    # Caso o nó seja o último nó da lista
+                    self.__fim = noAtual.anterior
+                    self.__fim.prox = None
+                else:
+                    # Caso o nó esteja no meio da lista
+                    noAtual.anterior.prox = noAtual.prox
+                    noAtual.prox.anterior = noAtual.anterior
+
+                self.__qtdItens -= 1
+                return True
+            
+            noAtual = noAtual.prox
+
+        return False
 
 
     # retornar True caso o elemento esteja presente na lista duplamente ligada
