@@ -147,7 +147,18 @@ class ListaDuplamenteLigadaOrdenada:
     # que a lista duplamente ligada está vazia e retorna uma lista vazia
     def display(self) -> list[str]:
         # implementação do método
-        pass
+        if self.is_empty():
+            print("A lista duplamente ligada ordenada está vazia.")
+            return []
+
+        values = []
+        noAtual = self.__inicio
+
+        while noAtual is not None:
+            values.append(noAtual.dado)
+            noAtual = noAtual.prox
+            
+        return values
     
 
     # retorna a quantidade de elementos na lista duplamente ligada
