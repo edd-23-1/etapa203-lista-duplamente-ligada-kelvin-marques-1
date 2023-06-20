@@ -54,7 +54,39 @@ class ListaDuplamenteLigadaOrdenada:
     # se a lista duplamente ligada estiver cheia, lança uma exceção: raise Exception("mensagem de erro")
     def add(self, valor) -> bool:
         # implementação do método
-        pass
+        if self.is_full():
+            raise Exception("Lista duplamente ligada ordenada cheia")
+
+        novoNo = No(valor)
+
+        # Caso a lista esteja vazia, o novoNo será o início e o fim da lista
+        if self.is_empty():
+            self.__inicio = novoNo
+            self.__fim = novoNo
+        else:
+            # Inserir o novoNo em ordem crescente na lista
+            noAtual = self.__inicio
+
+            while noAtual is not None and valor > noAtual.dado:
+                noAtual = noAtual.prox
+
+            # Inserir o novoNo antes de noAtual
+            if noAtual is None:
+                novoNo.anterior = self.__fim
+                self.__fim.prox = novoNo
+                self.__fim = novoNo
+            elif noAtual == self.__inicio:
+                novoNo.prox = self.__inicio
+                self.__inicio.anterior = novoNo
+                self.__inicio = novoNo
+            else:
+                novoNo.anterior = noAtual.anterior
+                novoNo.prox = noAtual
+                noAtual.anterior.prox = novoNo
+                noAtual.anterior = novoNo
+
+        self.__qtdItens += 1
+        return True
 
     
     # remove um elemento da lista duplamente ligada retornando True caso ele seja removido
